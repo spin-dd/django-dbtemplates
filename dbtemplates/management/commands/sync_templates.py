@@ -1,6 +1,5 @@
 import io
 import os
-import sys
 from django.contrib.sites.models import Site
 from django.core.management.base import CommandError, BaseCommand
 from django.template.utils import get_app_template_dirs
@@ -77,7 +76,7 @@ class Command(BaseCommand):
                 for f in [f for f in filenames
                           if f.endswith(extension) and not f.startswith(".")]:
                     path = os.path.join(dirpath, f)
-                    name = path.split(templatedir)[1]
+                    name = path.split(str(templatedir))[1]
                     if name.startswith('/'):
                         name = name[1:]
                     try:
